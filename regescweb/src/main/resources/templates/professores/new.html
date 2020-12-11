@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet">
+
+    <title>Novo Professor</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Novo Professor</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form action="/professores" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nome do Professor</label>
+                    <input class="form-control" type="text" name="nome">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Salário</label>
+                    <input class="form-control" type="text" name="salario">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" name="statusProfessor">
+                        <option th:each="status : ${statusProfessor}"
+                                th:value="${status}" th:text="${status}"></option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" type="submit">Submeter</button>
+                <a href="javascript:history.back()">Voltar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script crossorigin="anonymous"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
