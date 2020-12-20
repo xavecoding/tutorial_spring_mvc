@@ -9,10 +9,10 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 // É uma classe DTO (Data Transfer Object)
-public class RequisicaoNovoProfessor {
+public class RequisicaoFormProfessor {
     @NotBlank
     @NotNull
-    private String nome;
+    private String nome; // em caso de erro, NotBlank.requisicaoNovoProfessor.nome
     @NotNull
     @DecimalMin("0.0")
     private BigDecimal salario;
@@ -50,6 +50,20 @@ public class RequisicaoNovoProfessor {
         professor.setStatusProfessor(this.statusProfessor);
 
         return professor;
+    }
+
+
+    public Professor toProfessor(Professor professor) {
+        professor.setNome(this.nome);
+        professor.setSalario(this.salario);
+        professor.setStatusProfessor(this.statusProfessor);
+        return professor;
+    }
+
+    public void fromProfessor(Professor professor) {
+        this.nome = professor.getNome();
+        this.salario = professor.getSalario();
+        this.statusProfessor = professor.getStatusProfessor();
     }
 
     @Override

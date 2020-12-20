@@ -1,10 +1,11 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragmentos :: head('Novo Professor')}"></head>
+<head th:replace="~{fragmentos :: head('Editar Professor')}"></head>
 
 <body>
-<header th:replace="~{fragmentos :: header('Novo Professor')}"></header>
-<div th:replace="~{professores/fragmentos :: form(requisicaoFormProfessor, '/professores')}">Formulário!</div>
+<header th:replace="~{fragmentos :: header('Editar Professor #' + ${professorId})}"></header>
+
+<div th:replace="~{professores/fragmentos :: form(requisicaoFormProfessor, '/professores/' + ${professorId})}">Formulário!</div>
 
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: head('Home')}"></head>
+
+<body>
+    <header th:replace="~{fragmentos :: header('Sistema Registros Escolares')}"></header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action"
+                    th:onclick="'window.location.href=\'/professores\''">Professores</button>
+                <button type="button" class="list-group-item list-group-item-action">Alunos</button>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script crossorigin="anonymous" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

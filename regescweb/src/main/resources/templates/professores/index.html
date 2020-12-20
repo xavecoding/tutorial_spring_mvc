@@ -1,56 +1,56 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="~{fragmentos :: head('Lista de Professores')}"></head>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<body>
+<header th:replace="~{fragmentos :: header('Lista de Professores')}"></header>
 
-    <title>Lista de Professores</title>
-  </head>
-  <body>
-    <div class="container">
-        <div class="row">
-            <h1>Lista de Professores</h1>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Salário</th>
-                            <th scope="col">Status</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                      </thead>
-                    <tbody>
-                        <tr th:each="professor : ${professores}">
-                            <th class="col-1" scope="row" th:text="${professor.getId()}">ID</th>
-                            <td class="col-4" th:text="${professor.nome}">Nome do Professor</td>
-                            <td class="col-2" th:text="${professor.salario}">Salário</td>
-                            <td class="col-2" th:text="${professor.statusProfessor.toString()}">STATUS</td>
-                            <td class="col-1"><a href="#">Detalhes</a></td>
-                            <td class="col-1"><a href="#">Editar</a></td>
-                            <td class="col-1"><a href="#">Deletar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <a href="/professor/new">Novo Professor</a>
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:classappend="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Uma mensagem bem legal!</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Salário</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="professor : ${professores}">
+                    <th class="col-1" scope="row" th:text="${professor.getId()}">ID</th>
+                    <td class="col-4" th:text="${professor.nome}">Nome do Professor</td>
+                    <td class="col-2" th:text="${professor.salario}">Salário</td>
+                    <td class="col-2" th:text="${professor.statusProfessor.toString()}">STATUS</td>
+                    <td class="col-1"><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}">Detalhes</a></td>
+                    <td class="col-1"><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
+                    <td class="col-1"><a th:href="@{/professores/{professorId}/delete(professorId = ${professor.id})}">Deletar</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    <div class="row">
+        <a href="/professores/new">Novo Professor</a>
+    </div>
+</div>
 
 
 
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  </body>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
 </html>
